@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AquaDeck package: independent instances</title><style>body{margin:20px auto;max-width:1100px;padding:0 15px;background:#eaf1f4;font:16px system-ui}section.demo{margin:30px 0;border:1px solid #bdcdd6;padding:10px}button{min-height:44px}</style><h1>Package integration test</h1><p>Two independent instances. The first has captions and chapters; the second has neither and starts with reflections disabled.</p><button id="dispose">Dispose second instance</button><section class="demo"><h2>Player one</h2><div id="one"></div></section><section class="demo"><h2>Player two</h2><div id="two"></div></section><script type="module">
+import {mountAquaDeck} from '../index.js';
+import '../style.css';
+const mediaBase=import.meta.env.BASE_URL+'assets/';
+const options={src:mediaBase+'aqua-motion.mp4',poster:mediaBase+'poster.jpg',chapters:[{title:'Drift',startTime:0},{title:'Current',startTime:8},{title:'Tide',startTime:16}],captions:[{src:mediaBase+'captions.vtt',language:'en',label:'English'}]};
+const one=await mountAquaDeck(document.querySelector('#one'),options);
+let two=await mountAquaDeck(document.querySelector('#two'),{src:options.src,poster:options.poster,reflections:false,label:'Second independent player'});
+document.querySelector('#dispose').onclick=async()=>{if(two){two.dispose();two=null;document.querySelector('#dispose').textContent='Recreate second instance'}else{two=await mountAquaDeck(document.querySelector('#two'),{src:options.src,poster:options.poster,reflections:false,label:'Second independent player'});document.querySelector('#dispose').textContent='Dispose second instance'}};
+</script></html>

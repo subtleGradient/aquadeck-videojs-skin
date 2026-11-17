@@ -1,0 +1,94 @@
+{
+  "width": 1449,
+  "height": 1086,
+  "screen": {
+    "x": 184,
+    "y": 161,
+    "width": 986,
+    "height": 531,
+    "radius": 34
+  },
+  "sprites": {
+    "play": {
+      "x": 96,
+      "y": 744,
+      "width": 131,
+      "height": 217,
+      "file": "play.png",
+      "pressed": "play-pressed.png"
+    },
+    "stop": {
+      "x": 222,
+      "y": 747,
+      "width": 103,
+      "height": 213,
+      "file": "stop.png",
+      "pressed": "stop-pressed.png"
+    },
+    "previous": {
+      "x": 416,
+      "y": 817,
+      "width": 114,
+      "height": 90,
+      "file": "previous.png",
+      "pressed": "previous-pressed.png"
+    },
+    "next": {
+      "x": 529,
+      "y": 817,
+      "width": 110,
+      "height": 90,
+      "file": "next.png",
+      "pressed": "next-pressed.png"
+    },
+    "fullscreen": {
+      "x": 1231,
+      "y": 619,
+      "width": 99,
+      "height": 100,
+      "file": "fullscreen.png",
+      "pressed": "fullscreen-pressed.png"
+    },
+    "cc-thumb": {
+      "x": 1263,
+      "y": 436,
+      "width": 81,
+      "height": 77,
+      "file": "cc-thumb.png",
+      "pressed": "cc-thumb-pressed.png"
+    },
+    "seek-thumb": {
+      "x": 431,
+      "y": 723,
+      "width": 47,
+      "height": 48,
+      "file": "seek-thumb.png",
+      "pressed": "seek-thumb-pressed.png"
+    },
+    "volume-thumb": {
+      "x": 793,
+      "y": 839,
+      "width": 48,
+      "height": 47,
+      "file": "volume-thumb.png",
+      "pressed": "volume-thumb-pressed.png"
+    }
+  },
+  "ccTravel": 55,
+  "seekTrack": {
+    "x1": 454,
+    "x2": 1103,
+    "y": 747
+  },
+  "volumeTrack": {
+    "x1": 816,
+    "x2": 1119,
+    "y": 863
+  },
+  "mute": {
+    "x": 717,
+    "y": 833,
+    "width": 70,
+    "height": 59
+  }
+}
