@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A scoped, image-backed Y2K skin for Video.js 10 HTML players",
   "type": "module",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "sideEffects": ["./style.css"],
   "exports": {".": {"types":"./index.d.ts","import":"./index.js"}, "./style.css":"./style.css", "./assets/*":"./assets/*"},
   "files": ["index.js","index.d.ts","style.css","assets","README.md","LICENSE","NOTICE.md"],

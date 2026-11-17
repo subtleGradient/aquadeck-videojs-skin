@@ -111,4 +111,4 @@ Six Node tests cover exports/assets/scoping/caption semantics/disabled-state CSS
 
 ## License
 
-MIT for this package's code and supplied project artwork, to the extent rights exist. Video.js is a separately installed Apache-2.0 peer dependency. No third-party media is bundled in the package. No endorsement by Video.js or Apple is implied.
+Apache-2.0 for this package's code and supplied project artwork, to the extent rights exist. Video.js is a separately installed Apache-2.0 peer dependency. No third-party media is bundled in the package. No endorsement by Video.js or Apple is implied.

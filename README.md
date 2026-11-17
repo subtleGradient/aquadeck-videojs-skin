@@ -81,6 +81,6 @@ Chromium checks cover playback and key interaction states. Safari/iOS, assistive
 
 ## Credits and license
 
-MIT for the project's code and supplied artwork, to the extent rights exist. See the [license](LICENSE) and [artwork/dependency notices](packages/aquadeck-skin/NOTICE.md). Video.js is a separate Apache-2.0 dependency.
+Apache-2.0 for the project's code and supplied artwork, to the extent rights exist. See the [license](LICENSE) and [artwork/dependency notices](packages/aquadeck-skin/NOTICE.md). Video.js is a separate Apache-2.0 dependency.
 
 The chassis artwork was generated with OpenAI image generation and adapted into interactive sprites. The desktop artwork and [procedural demo film](public/assets/VIDEO-README.md) were made for this project. AquaDeck is independent of Microsoft, Apple, and Video.js.
