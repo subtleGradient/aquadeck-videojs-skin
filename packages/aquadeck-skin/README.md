@@ -36,25 +36,6 @@ Every mount owns its state, controls, listeners and DOM subtree. Multiple player
 
 For bundlers that do not process `new URL('./assets/file.png', import.meta.url)`, copy this package's `assets/` directory to your public folder and pass `assetBase: '/aquadeck-assets/'`. The trailing slash is important. Do not move or rename individual asset files.
 
-### React
-
-Mount only on the client. Avoid server-side evaluation of browser custom elements.
-
-```jsx
-useEffect(() => {
-  let cancelled = false;
-  let skin;
-  import('@aquadeck/videojs-skin').then(async ({ mountAquaDeck }) => {
-    const created = await mountAquaDeck(ref.current, { src });
-    if (cancelled) created.dispose();
-    else skin = created;
-  });
-  return () => { cancelled = true; skin?.dispose(); };
-}, [src]);
-```
-
-Include `import '@aquadeck/videojs-skin/style.css'` in your client stylesheet entry. The same mount/dispose contract works in Vue's mounted/unmounted hooks and Svelte's `onMount` cleanup.
-
 ## API
 
 `mountAquaDeck(host, options)` returns a Promise of `{ root, player, video, play, pause, seek, setReflections, dispose }`.
