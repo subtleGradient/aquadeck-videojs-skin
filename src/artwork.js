@@ -1,10 +1,9 @@
 import './artwork.css';
+import meta from '../public/art/coordinates.json';
 export async function setupArtwork(){
  const deck=document.querySelector('.deck');
- const layer=document.createElement('div');layer.className='art-layer';layer.setAttribute('aria-hidden','true');deck.prepend(layer);
+ const layer=deck.querySelector('.art-layer');
  const artUrl=file=>`${import.meta.env.BASE_URL}art/${file}`;
- const meta=await fetch(artUrl('coordinates.json')).then(r=>r.json());
- const base=document.createElement('img');base.className='art-base';base.src=artUrl('chassis.png');base.alt='';layer.append(base);
  for(const[name,r]of Object.entries(meta.sprites)){
  const id=name.replace('-thumb','');
  const cap=document.createElement('div');cap.className='art-cap art-'+id;cap.dataset.control=id;

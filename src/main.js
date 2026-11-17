@@ -8,7 +8,7 @@ import {createOptics} from './optics.js';
 import {layoutChassis} from './chassis.js';
 const $=s=>document.querySelector(s), v=$('#video'), player=$('#player');
 await customElements.whenDefined('video-player');
-const syncArtwork=await setupArtwork().catch(error=>{console.warn('Artwork unavailable; using native skin',error);document.querySelector('.art-layer')?.remove();return ()=>{}});
+const syncArtwork=await setupArtwork().catch(error=>{console.warn('Artwork unavailable; using native skin',error);document.querySelector('.art-layer')?.remove();document.body.classList.remove('artwork-mode');return ()=>{}});
 const chapters=[{title:'Chromatic drift',startTime:0,endTime:8},{title:'Pearl current',startTime:8,endTime:16},{title:'Prismatic tide',startTime:16,endTime:24}];
 player.store.addTextTrack({kind:'chapters',label:'Motion studies',cues:chapters.map((c,i)=>({...c,id:`scene-${i+1}`,text:c.title}))});
 v.volume=.65;
