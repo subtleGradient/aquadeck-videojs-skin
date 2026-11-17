@@ -29,3 +29,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{background-image:var(--spr
 input[type=range]:active::-webkit-slider-thumb{background-image:var(--sprite-down)}input[type=range]:active::-moz-range-thumb{background-image:var(--sprite-down)}
 input[type=range]:disabled::-webkit-slider-thumb{background-image:var(--sprite-disabled)}input[type=range]:disabled::-moz-range-thumb{background-image:var(--sprite-disabled)}
 @media(max-width:420px){.transport{top:69.5%}.extras{top:81%}.orb:first-child{height:44px}}
+
+/* Fit the complete generated frames inside their hit targets, without clipping. */
+.orb,.orb:first-child{background-size:contain;height:9cqw;min-height:44px}.orb:first-child{height:10cqw}
+.transport{top:67%}.extras{top:76%;height:44px}.extras button{height:44px;background-size:auto 145%}
+@media(max-width:420px){.transport{top:69.5%}.extras{top:81%}.orb,.orb:first-child{height:44px}}

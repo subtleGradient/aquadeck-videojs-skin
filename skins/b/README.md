@@ -38,4 +38,4 @@ Apache License 2.0. The chassis is AI-generated original artwork based on the ow
 
 ## Sprite production
 
-`public/art/transport-sheet.png` and `auxiliary-sheet.png` preserve the generated production sheets. `scripts/slice-sprites.py` slices their grid cells, detects solid alpha bounds without flattening the image, preserves aspect ratio and centers each frame on a consistent canvas. `public/art/sprites/` contains all 50 exported states. Real buttons/ranges remain interactive; generated art includes the symbols. Native play/pause activation stays synchronous within the click for iOS.
+`public/art/transport-sheet.png` and `auxiliary-sheet.png` preserve the generated production sheets. `scripts/slice-sprites.py` uses measured auxiliary-sheet gutters (the generated sheet is not a uniform grid), slices control cells and detects solid alpha bounds without flattening the image, preserves aspect ratio and centers each frame on a consistent canvas. `public/art/sprites/` contains all 50 exported states. Real buttons/ranges remain interactive; generated art includes the symbols. Native play/pause activation stays synchronous within the click for iOS.
