@@ -31,13 +31,22 @@ test('Small mounts retain the artwork control layer without a separate dock',()=
  assert.ok(!js.includes('USE CONTROLS BELOW'));
 });
 
-test('Reduced-motion changes do not override explicitly disabled reflections',()=>{
+test('Reduced motion follows OS only until an explicit reflection preference',()=>{
+ const resolve=(preference,reduced)=>preference??!reduced;
+ assert.equal(resolve(false,false),false);
+ assert.equal(resolve(true,true),true);
+ assert.equal(resolve(undefined,true),false);
+ assert.equal(resolve(undefined,false),true);
+ assert.ok(read('index.js').includes('applyReflections(reflectionPreference??!motion.matches)'));
+});
+test('Time readout is not a constantly announcing live region',()=>{
+ assert.ok(read('index.js').includes("readout.setAttribute('aria-live','off')"));
+});
+test('Reflections skip unchanged paused frames and avoid unchanged canvas allocations',()=>{
  const source=read('index.js');
- const expression=source.match(/listen\(motion,'change',\(\)=>setReflections\((.*?)\)\)/)[1];
- const enabled=new Function('options','motion',`return ${expression}`);
- assert.equal(enabled({reflections:false},{matches:false}),false);
- assert.equal(enabled({},{matches:true}),false);
- assert.equal(enabled({},{matches:false}),true);
+ assert.ok(source.includes('(reflectionDirty||video.currentTime!==lastVideoTime)'));
+ assert.ok(source.includes('if(canvas.width!==120)canvas.width=120'));
+ assert.ok(source.includes('if(canvas.height!==height)canvas.height=height'));
 });
 test('Fullscreen includes an iOS video fallback and native state labels',()=>{
  const source=read('index.js');

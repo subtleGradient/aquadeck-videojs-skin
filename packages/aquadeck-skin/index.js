@@ -52,7 +52,7 @@ export async function mountAquaDeck(host,options={}){
  const chapters=(options.chapters||[]).filter(c=>Number.isFinite(c.startTime)&&c.startTime>=0).map(c=>({...c})).sort((a,b)=>a.startTime-b.startTime);
  const controls=document.createElement('div');controls.className='aqdk-controls';player.append(controls);
  const notice=document.createElement('p');notice.className='aqdk-notice';notice.setAttribute('role','status');root.append(notice);
- const readout=document.createElement('output');readout.className='aqdk-time';root.append(readout);
+ const readout=document.createElement('output');readout.className='aqdk-time';readout.setAttribute('aria-live','off');root.append(readout);
  const buttons={},caps={},canvases=[];
  const make=(id,label)=>{const b=document.createElement('button');b.type='button';b.tabIndex=0;b.className=`aqdk-control aqdk-${id}`;b.setAttribute('aria-label',label);if(icons[id])setIcon(b,id);else b.textContent=label;controls.append(b);buttons[id]=b;return b};
  const makeRange=(id,label,max,step)=>{const input=document.createElement('input');input.type='range';input.tabIndex=0;input.min='0';input.max=String(max);input.step=String(step);input.className=`aqdk-control aqdk-${id}`;input.setAttribute('aria-label',label);controls.append(input);buttons[id]=input;return input};
@@ -77,7 +77,7 @@ export async function mountAquaDeck(host,options={}){
   const i=all.indexOf(document.activeElement),next=i+(event.shiftKey?-1:1);
   if(i>=0&&next>=0&&next<all.length){event.preventDefault();all[next].focus()}
  });
- let disposed=false,frame=0,last=0;const motion=matchMedia('(prefers-reduced-motion: reduce)');let opticsEnabled=options.reflections!==false&&!motion.matches;
+ let disposed=false,frame=0,last=0,reflectionDirty=true,lastVideoTime=-1,reflectionPreference=options.reflections;const motion=matchMedia('(prefers-reduced-motion: reduce)');let opticsEnabled=options.reflections!==false&&!motion.matches;
  const seek=t=>player.store.seek(Math.max(0,Math.min(Number.isFinite(video.duration)?video.duration:Number.MAX_SAFE_INTEGER,t)));
  function sync(){
   if(disposed)return;
@@ -98,6 +98,7 @@ export async function mountAquaDeck(host,options={}){
  }
  const release=()=>Object.values(caps).forEach(c=>c.classList.remove('is-pressed'));listen(window,'pointerup',release);listen(window,'pointercancel',release);listen(window,'keyup',release);listen(window,'blur',release);
  listen(buttons.play,'click',()=>{Promise.resolve(video.paused?player.store.play():player.store.pause()).catch(()=>{notice.textContent='Playback was blocked. Try pressing Play again.'})});
+ listen(video,'playing',()=>{if(notice.textContent==='Playback was blocked. Try pressing Play again.')notice.textContent=''});
  listen(buttons.stop,'click',async()=>{await player.store.pause();await seek(0);sync()});
  listen(buttons.previous,'click',()=>seek([...chapters].reverse().find(c=>c.startTime<video.currentTime-.3)?.startTime||0));listen(buttons.next,'click',()=>{const c=chapters.find(c=>c.startTime>video.currentTime+.3);if(c)seek(c.startTime)});
  listen(buttons.mute,'click',()=>{const silent=video.muted||video.volume===0;if(silent&&video.volume===0)video.volume=1;video.muted=!silent;sync()});listen(buttons.volume,'input',()=>{video.volume=Number(buttons.volume.value);video.muted=video.volume===0});listen(buttons.seek,'input',()=>seek(Number(buttons.seek.value)));
@@ -105,9 +106,12 @@ export async function mountAquaDeck(host,options={}){
  listen(buttons.cc,'click',()=>{const tracks=[...video.textTracks].filter(t=>t.kind==='captions');const on=tracks.some(t=>t.mode==='showing');tracks.forEach((t,i)=>{t.mode=!on&&i===0?'showing':'hidden'});sync()});
  listen(buttons.fullscreen,'click',async()=>{try{if(document.fullscreenElement===root)await document.exitFullscreen();else if(root.requestFullscreen)await root.requestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();else throw new Error('Fullscreen unsupported');notice.textContent=''}catch{notice.textContent='Fullscreen was not permitted by this browser.'}});listen(document,'fullscreenchange',()=>buttons.fullscreen.setAttribute('aria-label',document.fullscreenElement===root?'Exit fullscreen':'Enter fullscreen'));listen(video,'webkitbeginfullscreen',()=>buttons.fullscreen.setAttribute('aria-label','Exit fullscreen'));listen(video,'webkitendfullscreen',()=>buttons.fullscreen.setAttribute('aria-label','Enter fullscreen'));
  listen(loopButton,'click',()=>{video.loop=!video.loop;loopButton.setAttribute('aria-pressed',String(video.loop))});
- function setReflections(on){opticsEnabled=!!on;opticsButton.setAttribute('aria-pressed',String(opticsEnabled));root.classList.toggle('aqdk-static',!opticsEnabled)}listen(opticsButton,'click',()=>setReflections(!opticsEnabled));listen(motion,'change',()=>setReflections(options.reflections!==false&&!motion.matches));setReflections(opticsEnabled);
+ function applyReflections(on){opticsEnabled=!!on;reflectionDirty=true;opticsButton.setAttribute('aria-pressed',String(opticsEnabled));root.classList.toggle('aqdk-static',!opticsEnabled)}
+ function setReflections(on){reflectionPreference=!!on;applyReflections(on)}
+ listen(opticsButton,'click',()=>setReflections(!opticsEnabled));listen(motion,'change',()=>applyReflections(reflectionPreference??!motion.matches));applyReflections(opticsEnabled);
+ for(const event of ['loadeddata','seeked','resize'])listen(video,event,()=>{reflectionDirty=true});listen(window,'resize',()=>{reflectionDirty=true});
  for(const event of ['loadedmetadata','timeupdate','play','pause','volumechange','seeked','ended'])listen(video,event,sync);listen(video,'error',()=>{notice.textContent='Video could not load. Check the media URL and cross-origin policy.'});listen(video.textTracks,'change',sync);
  // Same-origin/CORS-enabled footage only. Reflections are optional, not player controls.
- function draw(now){if(disposed)return;if(opticsEnabled&&video.readyState>=2&&!document.hidden&&now-last>80){last=now;try{for(const canvas of canvases){const r=canvas.getBoundingClientRect();canvas.width=120;canvas.height=Math.max(1,Math.round(120*r.height/Math.max(r.width,1)));const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.save();ctx.translate(0,canvas.height);ctx.scale(1,-1);ctx.drawImage(video,0,0,canvas.width,canvas.height);ctx.restore()}}catch{setReflections(false)}}frame=requestAnimationFrame(draw)}frame=requestAnimationFrame(draw);sync();
+ function draw(now){if(disposed)return;if(opticsEnabled&&video.readyState>=2&&!document.hidden&&(reflectionDirty||video.currentTime!==lastVideoTime)&&now-last>80){last=now;reflectionDirty=false;lastVideoTime=video.currentTime;try{for(const canvas of canvases){const r=canvas.getBoundingClientRect();const height=Math.max(1,Math.round(120*r.height/Math.max(r.width,1)));if(canvas.width!==120)canvas.width=120;if(canvas.height!==height)canvas.height=height;const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.save();ctx.translate(0,canvas.height);ctx.scale(1,-1);ctx.drawImage(video,0,0,canvas.width,canvas.height);ctx.restore()}}catch{setReflections(false)}}frame=requestAnimationFrame(draw)}frame=requestAnimationFrame(draw);sync();
  return {root,player,video,seek,play:()=>player.store.play(),pause:()=>player.store.pause(),setReflections,dispose(){if(disposed)return;disposed=true;abort.abort();cancelAnimationFrame(frame);video.pause();video.removeAttribute('src');video.load();root.remove()}};
 }

@@ -105,9 +105,9 @@ Node tests verify package/asset contracts, not rendered browser behavior. Real-d
 
 ## Verification for 0.1.0
 
-Chromium review covered desktop and a 333 CSS-pixel compact layout: actual hover, pointer-held/pressed, keyboard focus, disabled and toggle states for playback, chapter, mute, timeline, volume, captions, fullscreen, loop and reflections controls. Pressed sprite URLs and cap travel were checked during real held input; disabled controls retain their resting material. The review also exercised true Tab/Shift+Tab, keyboard activation and seeking, captions up=ON/down=OFF, two-instance isolation, disposal/recreation, and fullscreen entry/exit. Compact buttons measured at least 48px high in the checked layout, with no horizontal overflow.
+Earlier Chromium review exercised pointer, keyboard and toggle states, two-instance isolation, disposal/recreation and fullscreen. The compact layout was subsequently changed to retain the original scaled artwork controls, without a duplicate toolbar. Small targets are not guaranteed to meet 44px or 48px target-size guidance. The latest layout and Safari edge behavior still need real-device verification.
 
-Six Node tests cover exports/assets/scoping/caption semantics/disabled-state CSS guards and the zero-volume unmute handler. Unmute restores full volume when the slider is at zero; otherwise it preserves the selected volume. These do not replace browser review. Safari/iOS, assistive-technology combinations, arbitrary host CSS and all device pixel ratios remain unverified. The package provides Canvas 2D reflections only.
+Node tests cover exports, assets, scoping, captions, disabled states, zero-volume unmute, reflection preferences and paused-frame guards, timer live-region behavior, fullscreen fallbacks and CC text contrast. They are source-contract checks, not a substitute for browser or assistive-technology tests. Safari/iOS, arbitrary host CSS and all device pixel ratios remain unverified. The package provides Canvas 2D reflections only.
 
 ## License
 

@@ -1,6 +1,6 @@
 /* Original XP-inspired desktop chrome. Appliance geometry and artwork stay untouched. */
 :root{font-family:Tahoma,Verdana,Arial,sans-serif;background:#397bc1;color:#182942;scroll-padding-bottom:65px}
-body{background:none;padding:0 0 54px;min-height:100vh}
+body{background:none}
 .desktop-wallpaper{position:fixed;inset:0;z-index:-1;background:#4286cd;pointer-events:none}.desktop-wallpaper svg{width:100%;height:100%;display:block}
 .desktop-shortcuts{position:absolute;left:24px;top:27px;display:grid;gap:20px;width:84px;z-index:3}.desktop-shortcuts a{display:flex;align-items:center;flex-direction:column;gap:6px;min-height:77px;color:#fff;text-decoration:none;text-align:center;font:12px Tahoma,Arial;text-shadow:1px 2px 2px #163752;padding:4px;border:1px solid transparent}.desktop-shortcuts a:hover,.desktop-shortcuts a:focus-visible{background:#376ab866;border:1px dotted white;outline:none}.desktop-icon{display:block;position:relative;width:40px;height:37px;filter:drop-shadow(2px 3px 1px #143c5c66);font:30px Arial;text-shadow:none}.computer-icon{background:linear-gradient(135deg,#e8eff5,#8796ac);border:2px solid #eaf3f7;border-radius:4px;color:#1568d0;line-height:25px;box-shadow:inset 0 0 0 3px #58667f}.computer-icon:after{content:'';position:absolute;bottom:-8px;width:28px;height:7px;left:4px;background:#becbd8;border:1px solid #fff}.folder-icon{height:31px;margin-top:6px;background:linear-gradient(#fff1a5,#ddb44d);border:1px solid #b98726;border-radius:2px;color:#9e7427;font-size:22px}.folder-icon:before{content:'';position:absolute;left:0;top:-7px;width:18px;height:7px;background:#edce77;border-radius:3px 3px 0 0}.disc-icon{border-radius:50%;background:conic-gradient(#d9e0ed,#96b8d6,#efbaf0,#f2f4cc,#8de1cf,#e2e8ef);border:1px solid #edf5fc}.disc-icon:after{content:'';position:absolute;inset:14px;border-radius:50%;background:#5274a0;border:2px solid #e9effb}.document-icon{background:#fffef2;border:1px solid #8b9aaa;color:#7a8fab;font:36px/27px Arial;width:29px;margin-left:5px;box-shadow:2px 2px #b4c8e2}
 header.desktop-heading{width:min(1060px,calc(100% - 230px));padding:27px 0 0;margin:0 30px 0 auto;border:0;display:block;color:#fff;text-shadow:1px 2px 3px #1f4c78}.desktop-kicker{font:bold 10px Tahoma;letter-spacing:2px;margin:0 0 8px;opacity:.85}.desktop-heading h1{font:normal clamp(20px,2.2vw,30px) Tahoma;letter-spacing:-.5px}.desktop-heading>p:last-child{font:12px Tahoma;margin:8px 0 0;color:#e4f2ff}
@@ -16,11 +16,23 @@ main{width:min(1120px,calc(100% - 180px));margin:15px 30px 0 auto}.floating-app-
 @media(max-width:900px){.desktop-shortcuts{left:12px;width:65px;gap:15px}.desktop-shortcuts a{font-size:10px}main{width:calc(100% - 95px);margin-right:10px}header.desktop-heading{width:calc(100% - 110px);margin-right:20px}.desktop-heading h1{font-size:22px}.lab{margin-right:10px}.desktop-footer{width:calc(100% - 110px);margin-right:20px}.floating-app-label{margin-bottom:-25px}.app-version{display:none}.notes{grid-template-columns:1fr}.notes details{border-left:0;border-top:1px solid #e1dfd2}}
 @media(max-width:760px){header.desktop-heading{width:calc(100% - 34px);margin:0 17px;padding-top:24px}.desktop-heading h1{font-size:21px}.desktop-kicker{font-size:8px}.desktop-shortcuts{position:relative;left:auto;top:auto;width:auto;display:flex;gap:16px;justify-content:flex-start;margin:20px 13px 0}.desktop-shortcuts a{width:65px;min-height:72px;padding:3px;font-size:10px}.desktop-shortcuts .desktop-icon{transform:scale(.85);transform-origin:bottom center}.desktop-heading{order:0}main{width:calc(100% - 18px);margin:22px 9px 0}.floating-app-label{margin-bottom:0;font-size:11px;padding:5px 12px}.device-meta{font-size:7px;margin-top:8px}.below-player{margin-top:14px;margin-bottom:24px}.lab{margin:0 0 24px}.lab-heading{padding:18px 15px 0}.lab-heading h2{font-size:20px}.lab .state-grid{grid-template-columns:repeat(3,1fr);gap:20px 0;padding:0 8px}.lab .sample-note{margin:16px 12px}.notes{margin:0 0 20px}.notes>div:not(.xp-title),.notes>details{padding:18px}.desktop-footer{width:calc(100% - 30px);margin:0 15px;font-size:8px;line-height:1.8}.taskbar{gap:7px}.taskbar-app{min-width:0;flex:1;width:auto;font-size:10px;padding:0 8px}.start-menu>summary{min-width:85px;padding:0 15px 0 10px;font-size:19px}.system-tray{padding:0 10px;gap:7px;font-size:10px}.system-tray>span{display:none}}
 
-/* Paint through Safari's edge-to-edge viewport; keep UI clear of the notch/home indicator. */
+/* Keep the page canvas edge-to-edge. Safe areas belong to foreground content,
+   not body padding: that padding exposed bands during Safari edge scrolling. */
 html{min-height:100%;background:#397bc1;overscroll-behavior-y:none;scroll-padding-bottom:calc(65px + env(safe-area-inset-bottom,0px))}
-body{margin:0;min-height:100vh;min-height:100dvh;padding-top:env(safe-area-inset-top,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:calc(54px + env(safe-area-inset-bottom,0px));padding-left:env(safe-area-inset-left,0px);overscroll-behavior-y:none}
-.desktop-wallpaper{top:calc(-1 * env(safe-area-inset-top,0px));bottom:auto;height:calc(100vh + env(safe-area-inset-top,0px) + env(safe-area-inset-bottom,0px));height:calc(100lvh + env(safe-area-inset-top,0px) + env(safe-area-inset-bottom,0px))}
+body{margin:0;padding:0;display:flow-root;isolation:isolate;min-height:100vh;min-height:100svh;overscroll-behavior-y:none}
+.desktop-wallpaper{inset:0;height:100%;height:100lvh}
+header.desktop-heading{padding-top:calc(27px + env(safe-area-inset-top,0px))}
+/* Only foregrounds are inset in landscape; wallpaper and taskbar still bleed. */
+@supports(padding:max(0px)){
+ main{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+ header.desktop-heading,.desktop-footer{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+}
+.desktop-footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 .taskbar{height:calc(44px + env(safe-area-inset-bottom,0px));padding:0 env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+@media(max-width:760px){
+ .desktop-shortcuts{margin-top:0;padding-top:calc(20px + env(safe-area-inset-top,0px));padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+ header.desktop-heading{padding-top:24px}
+}
 .system-tray time{display:inline-block;min-width:5.5em;text-align:center;font-variant-numeric:tabular-nums}
 
 .desktop-footer .source-link{display:inline-flex;align-items:center;min-height:44px;padding:6px 10px;color:#fff;text-decoration:underline;text-underline-offset:3px;border:1px solid #9ec8f477;border-radius:3px;background:#154e96aa;font:bold 11px Tahoma,Arial,sans-serif;letter-spacing:0}.desktop-footer .source-link:hover{background:#1f65bb}.desktop-footer .source-link:focus-visible{outline:2px solid #fff;outline-offset:3px}
