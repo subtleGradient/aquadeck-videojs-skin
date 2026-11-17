@@ -1,13 +1,14 @@
 import '@videojs/html/video/player';
-import '@videojs/html/ui/play-button';
-import '@videojs/html/ui/mute-button';
+import {activatePlayback} from './transport.js';
 import './style.css';
 const $=id=>document.getElementById(id), video=$('video'), player=$('player');
 await customElements.whenDefined('video-player');
 video.volume=.65;
+$('play').onclick=()=>activatePlayback(video,message=>{$('notice').textContent=message;update()});
+$('mute').onclick=()=>{if(video.muted||video.volume===0){video.muted=false;if(video.volume===0)video.volume=.65}else video.muted=true;update()};
 const fmt=n=>Number.isFinite(n)?`${String(Math.floor(n/60)).padStart(2,'0')}:${String(Math.floor(n%60)).padStart(2,'0')}`:'--:--';
 let dragging=false;
-function update(){const duration=Number.isFinite(video.duration)?video.duration:0;$('seek').disabled=!duration;$('stop').disabled=!duration;$('seek').max=duration||24;if(!dragging)$('seek').value=video.currentTime;$('seek').setAttribute('aria-valuetext',`${fmt(video.currentTime)} of ${fmt(duration)}`);$('time').textContent=`${fmt(video.currentTime)} / ${fmt(video.duration)}`;$('status').textContent=video.error?'ERROR':video.ended?'COMPLETE':video.paused?'STANDBY':'IN ORBIT';document.body.classList.toggle('playing',!video.paused);$('volume').value=video.muted?0:video.volume;$('volume').setAttribute('aria-valuetext',`${Math.round((video.muted?0:video.volume)*100)} percent`);$('sound').textContent=video.muted||!video.volume?'◖×':'◖))';}
+function update(){const duration=Number.isFinite(video.duration)?video.duration:0;$('seek').disabled=!duration;$('stop').disabled=!duration;$('seek').max=duration||24;if(!dragging)$('seek').value=video.currentTime;$('seek').setAttribute('aria-valuetext',`${fmt(video.currentTime)} of ${fmt(duration)}`);$('time').textContent=`${fmt(video.currentTime)} / ${fmt(video.duration)}`;$('status').textContent=video.error?'ERROR':video.ended?'COMPLETE':video.paused?'STANDBY':'IN ORBIT';document.body.classList.toggle('playing',!video.paused);$('volume').value=video.muted?0:video.volume;$('volume').setAttribute('aria-valuetext',`${Math.round((video.muted?0:video.volume)*100)} percent`);document.body.classList.toggle('muted',video.muted||!video.volume);$('play').setAttribute('aria-label',video.ended?'Replay':video.paused?'Play':'Pause');$('mute').setAttribute('aria-label',video.muted||!video.volume?'Unmute':'Mute');}
 for(const name of ['loadedmetadata','durationchange','timeupdate','volumechange','play','pause','ended','seeked'])video.addEventListener(name,update);
 video.addEventListener('playing',()=>{$('notice').textContent='';update()});
 video.addEventListener('waiting',()=>{$('status').textContent='BUFFERING'});

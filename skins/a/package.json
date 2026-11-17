@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "test": "node --test tests/structure.test.js"
+    "test": "node --test tests/*.test.js"
   },
   "dependencies": {
     "@videojs/html": "10.4.0",
