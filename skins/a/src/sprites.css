@@ -1,0 +1,35 @@
+/* Every surface/state is a crop from generated artwork, not a CSS recreation. */
+.buttons button{position:relative;padding:0;border:0;background:transparent;box-shadow:none;text-shadow:none;border-radius:0;filter:none;transform:none;overflow:visible}
+.buttons button::before{content:'';position:absolute;inset:-3px;pointer-events:none;background:var(--normal) center/contain no-repeat}
+.buttons button svg{display:none!important}
+.buttons button:hover,.buttons button:active,.buttons button[data-key-pressed=true],.buttons button[aria-pressed=true],.buttons button:disabled{background:transparent;filter:none;box-shadow:none;transform:none;opacity:1}
+@media(hover:hover){.buttons button:hover::before{background-image:var(--hover)}}
+.buttons button:active::before,.buttons button[data-key-pressed=true]::before{background-image:var(--pressed)}
+.buttons button:focus-visible{outline:0}
+.buttons button:focus-visible::before{background-image:var(--focus)}
+.buttons button:disabled::before{background-image:var(--disabled)}
+#play{--normal:url("../public/buttons/play-normal.png");--hover:url("../public/buttons/play-hover.png");--pressed:url("../public/buttons/play-pressed.png");--focus:url("../public/buttons/play-focus.png");--disabled:url("../public/buttons/play-disabled.png");}
+.playing #play{--normal:url("../public/buttons/pause-normal.png");--hover:url("../public/buttons/pause-hover.png");--pressed:url("../public/buttons/pause-pressed.png");--focus:url("../public/buttons/pause-focus.png");--disabled:url("../public/buttons/pause-disabled.png");}
+#stop{--normal:url("../public/buttons/stop-normal.png");--hover:url("../public/buttons/stop-hover.png");--pressed:url("../public/buttons/stop-pressed.png");--focus:url("../public/buttons/stop-focus.png");--disabled:url("../public/buttons/stop-disabled.png");}
+#mute{--normal:url("../public/buttons/sound-normal.png");--hover:url("../public/buttons/sound-hover.png");--pressed:url("../public/buttons/sound-pressed.png");--focus:url("../public/buttons/sound-focus.png");--disabled:url("../public/buttons/sound-disabled.png");}
+.muted #mute{--normal:url("../public/buttons/mute-normal.png");--hover:url("../public/buttons/mute-hover.png");--pressed:url("../public/buttons/mute-pressed.png");--focus:url("../public/buttons/mute-focus.png");--disabled:url("../public/buttons/mute-disabled.png");}
+#cc{--normal:url("../public/buttons/cc-normal.png");--hover:url("../public/buttons/cc-hover.png");--pressed:url("../public/buttons/cc-pressed.png");--focus:url("../public/buttons/cc-focus.png");--disabled:url("../public/buttons/cc-disabled.png");}
+#cc[aria-pressed=true]{--normal:url("../public/buttons/cc-on-normal.png");--hover:url("../public/buttons/cc-on-hover.png");--pressed:url("../public/buttons/cc-on-pressed.png");--focus:url("../public/buttons/cc-on-focus.png");--disabled:url("../public/buttons/cc-on-disabled.png");}
+#full{--normal:url("../public/buttons/fullscreen-normal.png");--hover:url("../public/buttons/fullscreen-hover.png");--pressed:url("../public/buttons/fullscreen-pressed.png");--focus:url("../public/buttons/fullscreen-focus.png");--disabled:url("../public/buttons/fullscreen-disabled.png");}
+input[type=range]{--thumb:url('../public/buttons/thumb-normal.png');--track:url('../public/buttons/track-normal.png');opacity:1}
+input[type=range]:hover{--thumb:url('../public/buttons/thumb-hover.png');--track:url('../public/buttons/track-hover.png')}
+input[type=range]:active{--thumb:url('../public/buttons/thumb-pressed.png');--track:url('../public/buttons/track-pressed.png')}
+input[type=range]:focus-visible{--thumb:url('../public/buttons/thumb-focus.png');--track:url('../public/buttons/track-focus.png')}
+input[type=range]:disabled{--thumb:url('../public/buttons/thumb-disabled.png');--track:url('../public/buttons/track-disabled.png')}
+input[type=range]::-webkit-slider-runnable-track{height:12px;border:0;box-shadow:none;border-radius:0;background:var(--track) center/100% 100% no-repeat}
+input[type=range]::-moz-range-track{height:12px;border:0;box-shadow:none;border-radius:0;background:var(--track) center/100% 100% no-repeat}
+input[type=range]::-webkit-slider-thumb{width:26px;height:26px;margin-top:-7px;border:0;background:var(--thumb) center/contain no-repeat;box-shadow:none;border-radius:0}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;background:var(--thumb) center/contain no-repeat;box-shadow:none;border-radius:0}
+/* Native vertical volume is laid over its original long glass well. */
+.volume input::-webkit-slider-runnable-track{width:8px;height:100%;background:transparent}
+.volume input::-webkit-slider-thumb{margin-top:0;margin-left:-9px}
+.volume input::-moz-range-track{width:8px;height:100%;background:transparent}
+@media(forced-colors:active){.buttons button{border:1px solid ButtonText}.buttons button:focus-visible{outline:3px solid Highlight}.buttons button svg{display:block!important}.buttons button::before{display:none}}
+/* Preserve focus visibility while showing the actual depressed keyboard artwork. */
+.buttons button:focus-visible:active::before,.buttons button:focus-visible[data-key-pressed=true]::before{background-image:var(--pressed)}
+.buttons button:focus-visible:active,.buttons button:focus-visible[data-key-pressed=true]{outline:2px solid #e7ff6a;outline-offset:3px}

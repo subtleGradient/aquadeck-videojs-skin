@@ -31,3 +31,7 @@ LIQUID ORBIT treats the player as a tiny spacecraft rather than a flat toolbar. 
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+
+### Generated control sprites
+
+The live skin uses literal artwork from `public/buttons/`, including separate play/pause, mute/sound and captions-on artwork. Each has five rendered states. `src/sprites.css` maps native interaction states onto the matching images without stretching button geometry. The range thumbs are cropped glass-pearl sprites; the volume thumb sits over the shell's original glass well. Run `python slice-sprites.py` to reproduce the crops from the two source sheets. Original native transport logic is unchanged.

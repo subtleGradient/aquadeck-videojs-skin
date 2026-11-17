@@ -1,6 +1,7 @@
 import '@videojs/html/video/player';
 import {activatePlayback} from './transport.js';
 import './style.css';
+import './sprites.css';
 const $=id=>document.getElementById(id), video=$('video'), player=$('player');
 await customElements.whenDefined('video-player');
 video.volume=.65;
