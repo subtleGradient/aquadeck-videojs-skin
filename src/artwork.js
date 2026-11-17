@@ -16,7 +16,6 @@ export async function setupArtwork(){
  const label=document.createElement('span');label.className='art-cc-label';layer.append(label);
  const muteFocus=document.createElement('span');muteFocus.className='art-mute-focus';layer.append(muteFocus);
  const muteCap=document.createElement('div');muteCap.className='art-mute-icon';for(const icon of document.querySelectorAll('#mute svg'))muteCap.append(icon.cloneNode(true));layer.append(muteCap);
- const dock=document.createElement('p');dock.className='dock-label';dock.textContent='PLAYER PREVIEW ABOVE · USE CONTROLS BELOW';deck.append(dock);
  document.body.classList.add('artwork-mode');
  return function sync(v){
  layer.querySelector('.art-seek').style.left=((431+(v.currentTime/(v.duration||24))*649)/1449*100)+'%';

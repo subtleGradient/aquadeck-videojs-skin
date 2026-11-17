@@ -75,7 +75,7 @@ The package does not supply HLS/DASH adapters, content hosting, a transcript edi
 ## Visual and accessibility contract
 
 - Desktop: native semantic buttons/ranges align over the artwork. Their opacity is zero, but keyboard focus, hover, active/pressed and disabled states have visible counterparts on separate sprites.
-- Smaller mounts (container width at most 760px): the proportional image is an explicitly labeled preview; full-size controls appear in a dock beneath. Tiny depicted controls are not clickable. This intentionally favors readable 44px targets rather than overlapping invisible hit areas.
+- All mount widths: the same proportional skin stays interactive, with native controls aligned to the artwork. No duplicate mobile dock. Small mounts scale their targets with the skin, so a 44px target minimum is not claimed.
 - Captions: **up = ON, down = OFF**, with visible text and `role="switch"`/`aria-checked` state. If no captions are supplied, this control is disabled.
 - Native Tab/Shift+Tab, Enter/Space and range keyboard behavior remain available. Timeline arrows seek five seconds, Page Up/Down ten seconds, Home/End go to bounds. A scoped Tab traversal fallback handles native-button skipping preferences without wrapping at either boundary; everything outside this instance remains browser-native. No global shortcuts are overridden. Safari remains unverified.
 - The screen remains a real video element. Canvas 2D video reflections are optional decorative overlays, alpha-masked to caps. They are **not** a physical refraction simulation, WebGL, HDR or experimental HTML-in-canvas.

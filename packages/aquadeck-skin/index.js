@@ -50,7 +50,6 @@ export async function mountAquaDeck(host,options={}){
  for(const caption of options.captions||[]){const t=document.createElement('track');t.kind='captions';t.src=caption.src;t.srclang=caption.language||'en';t.label=caption.label||t.srclang;video.append(t)}
  const chapters=(options.chapters||[]).filter(c=>Number.isFinite(c.startTime)&&c.startTime>=0).map(c=>({...c})).sort((a,b)=>a.startTime-b.startTime);
  const controls=document.createElement('div');controls.className='aqdk-controls';player.append(controls);
- const help=document.createElement('p');help.className='aqdk-dock-label';help.textContent='PLAYER PREVIEW ABOVE · USE CONTROLS BELOW';controls.append(help);
  const notice=document.createElement('p');notice.className='aqdk-notice';notice.setAttribute('role','status');root.append(notice);
  const readout=document.createElement('output');readout.className='aqdk-time';root.append(readout);
  const buttons={},caps={},canvases=[];

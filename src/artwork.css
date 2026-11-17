@@ -19,41 +19,22 @@
 .artwork-mode .deck:not(:fullscreen) .notice{top:2%;left:30%;right:22%}
 .art-cc-label{position:absolute;left:87%;top:50%;width:6%;text-align:center;font:600 .8cqw Arial;color:#345666}.has-captions .art-cc{translate:0 5cqw}.has-captions .art-cc-label{top:41%}
 .art-pause,.art-muted{display:none;position:absolute;color:#123f53;text-shadow:0 1px #b8dce6;line-height:1;z-index:3}.art-pause{left:10%;top:76%;font:bold 3cqw Arial}.art-muted{left:50%;top:77%;font:bold 3cqw Arial}.playing .art-pause,.is-muted .art-muted{display:block}
-.dock-label{display:none}.artwork-mode .deck:fullscreen .art-layer{display:none}
-@media(min-width:761px){
 .artwork-mode .deck:not(:fullscreen) :is(#play,#stop,#previous,#next,#mute,#volume,#cc,#fullscreen,#seek){opacity:0}
 .artwork-mode .deck:has(#play:focus-visible) .art-play,.artwork-mode .deck:has(#stop:focus-visible) .art-stop,.artwork-mode .deck:has(#previous:focus-visible) .art-previous,.artwork-mode .deck:has(#next:focus-visible) .art-next,.artwork-mode .deck:has(#cc:focus-visible) .art-cc,.artwork-mode .deck:has(#fullscreen:focus-visible) .art-fullscreen,.artwork-mode .deck:has(#seek:focus-visible) .art-seek,.artwork-mode .deck:has(#volume:focus-visible) .art-volume{outline:3px solid #062e54;outline-offset:5px;box-shadow:0 0 0 8px #fff}
 .artwork-mode .deck:has(#mute:focus-visible) .art-muted{display:block;outline:3px solid #062e54;outline-offset:4px;background:#d0e6e9}
-}
 .artwork-mode .deck:has(#play:hover) .art-play,.artwork-mode .deck:has(#stop:hover) .art-stop,.artwork-mode .deck:has(#previous:hover:not(:disabled)) .art-previous,.artwork-mode .deck:has(#next:hover:not(:disabled)) .art-next,.artwork-mode .deck:has(#fullscreen:hover) .art-fullscreen{filter:brightness(1.12)}
 .artwork-mode .deck:has(#play:active,#play[data-key-pressed=true]) .art-play,.artwork-mode .deck:has(#stop:active,#stop[data-key-pressed=true]) .art-stop,.artwork-mode .deck:has(#previous:active:not(:disabled),#previous[data-key-pressed=true]) .art-previous,.artwork-mode .deck:has(#next:active:not(:disabled),#next[data-key-pressed=true]) .art-next,.artwork-mode .deck:has(#fullscreen:active,#fullscreen[data-key-pressed=true]) .art-fullscreen{translate:0 3px;filter:brightness(.78);box-shadow:inset 0 6px 8px #062e57b0}
 .artwork-mode .deck:has(#previous:disabled) .art-previous,.artwork-mode .deck:has(#next:disabled) .art-next{filter:saturate(.2) brightness(.65)}
 .form-study .art-layer{filter:grayscale(1)}
-@media(max-width:760px){
-.artwork-mode .deck:not(:fullscreen){aspect-ratio:auto;height:calc(74.95cqw + 280px)}
-.artwork-mode .deck:not(:fullscreen) .aperture{top:11.04cqw;height:36.71cqw}
-.artwork-mode .deck:not(:fullscreen) .dock-label{display:block;position:absolute;top:76cqw;left:0;right:0;text-align:center;font:600 9px Arial;letter-spacing:1px;color:#436477}
-.artwork-mode .deck:not(:fullscreen) .seek-row{left:5%;top:calc(74.95cqw + 40px);width:90%;height:44px;display:flex;padding:0 8px;gap:8px;background:#c3d6db;border:1px solid #829ba7;border-radius:9px}
-.artwork-mode .deck:not(:fullscreen) .seek-row #compact-time{display:block!important;min-width:64px;font:9px Arial}
-.artwork-mode .deck:not(:fullscreen) #play{left:5%;top:calc(74.95cqw + 100px);width:58px;height:56px;border-radius:28px}
-.artwork-mode .deck:not(:fullscreen) #stop{left:calc(5% + 70px);top:calc(74.95cqw + 100px);width:48px;height:56px;border-radius:20px}
-.artwork-mode .deck:not(:fullscreen) #previous{left:calc(95% - 100px);top:calc(74.95cqw + 100px);width:46px;height:56px;border-radius:23px 5px 5px 23px}
-.artwork-mode .deck:not(:fullscreen) #next{left:calc(95% - 48px);top:calc(74.95cqw + 100px);width:46px;height:56px;border-radius:5px 23px 23px 5px}
-.artwork-mode .deck:not(:fullscreen) #mute{left:5%;top:calc(74.95cqw + 175px);width:44px;height:44px;background:#accbd7;border:1px solid #658a9d;border-radius:24px}
-.artwork-mode .deck:not(:fullscreen) #volume{left:calc(5% + 50px);top:calc(74.95cqw + 175px);width:calc(90% - 50px);height:44px}
-.artwork-mode .deck:not(:fullscreen) #cc.cc-switch{left:calc(50% - 62px);top:calc(74.95cqw + 227px);width:44px;height:44px;box-shadow:inset 0 2px 4px #527687;border-radius:24px}
-.artwork-mode .deck:not(:fullscreen) #cc .cc-thumb{width:28px;height:26px;top:3px;left:7px;font-size:8px}.artwork-mode .deck:not(:fullscreen) #cc .cc-state{bottom:2px;font-size:7px}.artwork-mode .deck:not(:fullscreen) #cc[aria-checked=true] .cc-thumb{transform:translateY(13px)}.artwork-mode .deck:not(:fullscreen) #cc[aria-checked=true] .cc-state{top:2px;bottom:auto}
-.artwork-mode .deck:not(:fullscreen) #fullscreen{left:calc(50% + 18px);top:calc(74.95cqw + 227px);width:44px;height:44px}
-.artwork-mode .deck:not(:fullscreen) .notice{top:72cqw;left:0;right:0;font-size:9px;z-index:10}
-}
+
 .has-captions .art-cc{translate:0 3.7957cqw}
 .artwork-mode .deck:has(#play:active,#play[data-key-pressed=true]) .art-play,.artwork-mode .deck:has(#stop:active,#stop[data-key-pressed=true]) .art-stop,.artwork-mode .deck:has(#previous:active:not(:disabled),#previous[data-key-pressed=true]) .art-previous,.artwork-mode .deck:has(#next:active:not(:disabled),#next[data-key-pressed=true]) .art-next,.artwork-mode .deck:has(#fullscreen:active,#fullscreen[data-key-pressed=true]) .art-fullscreen{background-image:var(--cap-pressed);filter:none}
 .art-mute-focus{position:absolute;left:49.48%;top:76.7%;width:4.83%;height:5.43%;border-radius:50%}
-@media(min-width:761px){.artwork-mode .deck:has(#mute:focus-visible) .art-muted{display:none}.artwork-mode .deck:has(#mute:focus-visible) .art-mute-focus{outline:3px solid #062e54;outline-offset:5px;box-shadow:0 0 0 8px white}.is-muted .deck:has(#mute:focus-visible) .art-muted{display:block}}
+.artwork-mode .deck:has(#mute:focus-visible) .art-muted{display:none}.artwork-mode .deck:has(#mute:focus-visible) .art-mute-focus{outline:3px solid #062e54;outline-offset:5px;box-shadow:0 0 0 8px white}.is-muted .deck:has(#mute:focus-visible) .art-muted{display:block}
 .art-play svg{position:absolute;left:34%;top:39%;width:30%;height:22%;fill:#123f53;filter:drop-shadow(0 1px #9bc4d2)}
 .art-mute-icon{position:absolute;left:49.48%;top:76.7%;width:4.83%;height:5.43%;color:#163f53}.art-mute-icon svg{width:100%;height:100%;fill:currentColor}
 .artwork-mode .deck:not(:fullscreen) .compound-play:before{display:none}
-.artwork-mode .deck:not(:fullscreen) :is(#play,#stop,#previous,#next,#mute,#volume,#cc,#fullscreen,#seek){min-width:44px;min-height:44px}
+.artwork-mode .deck:not(:fullscreen) :is(#play,#stop,#previous,#next,#mute,#volume,#cc,#fullscreen,#seek){min-width:0;min-height:0}
 .form-study .deck .art-layer{filter:grayscale(1)!important}.form-study.artwork-mode video{opacity:1}
 .artwork-mode .deck:has(#cc:hover) .art-cc,.artwork-mode .deck:has(#seek:hover) .art-seek,.artwork-mode .deck:has(#volume:hover) .art-volume{filter:brightness(1.12)}
 .artwork-mode .deck:has(#cc:active,#cc[data-key-pressed=true]) .art-cc,.artwork-mode .deck:has(#seek:active) .art-seek,.artwork-mode .deck:has(#volume:active) .art-volume{background-image:var(--cap-pressed);filter:none}
@@ -66,7 +47,8 @@
 #cc .cc-thumb{transform:translateY(32px)}#cc[aria-checked=true] .cc-thumb{transform:translateY(0)}
 #cc .cc-state{top:9px;bottom:auto}#cc[aria-checked=true] .cc-state{top:auto;bottom:9px}
 @media(max-width:560px){#cc .cc-thumb{transform:translateY(25px)}#cc[aria-checked=true] .cc-thumb{transform:translateY(0)}#cc .cc-state{top:6px;bottom:auto}#cc[aria-checked=true] .cc-state{top:auto;bottom:6px}}
-@media(max-width:760px){.artwork-mode .deck:not(:fullscreen) #cc .cc-thumb{transform:translateY(13px)}.artwork-mode .deck:not(:fullscreen) #cc[aria-checked=true] .cc-thumb{transform:translateY(0)}.artwork-mode .deck:not(:fullscreen) #cc .cc-state{top:2px;bottom:auto}.artwork-mode .deck:not(:fullscreen) #cc[aria-checked=true] .cc-state{top:auto;bottom:2px}}
 
 /* Resting image is CSS-owned so held-state selectors can switch sprite sheets. */
 .art-cap{background-image:var(--cap-rest)}
+
+.artwork-mode .deck:fullscreen .art-layer{display:none}
