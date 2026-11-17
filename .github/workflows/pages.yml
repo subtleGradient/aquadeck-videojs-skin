@@ -24,6 +24,18 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+      - name: Build independent challenge skins
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+        run: |
+          set -eu
+          for skin in a b c; do
+            npm ci --prefix "skins/$skin"
+            npm test --prefix "skins/$skin" --if-present
+            BASE_PATH="${BASE_PATH}skins/$skin/" npm run build --prefix "skins/$skin" -- --base "${BASE_PATH}skins/$skin/"
+            mkdir -p "dist/skins/$skin"
+            cp -a "skins/$skin/dist/." "dist/skins/$skin/"
+          done
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
