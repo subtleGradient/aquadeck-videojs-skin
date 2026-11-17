@@ -17,3 +17,6 @@
 .aqdk input[type=range]::-moz-range-thumb{width:20px;height:24px;border:1px solid #547b92;border-radius:10px;background:linear-gradient(110deg,#d9edf1,#76a5ba);box-shadow:inset 1px 1px #fff,0 2px 2px #34566c66}
 .aqdk input[type=range]:active:not(:disabled)::-webkit-slider-thumb{background:#7da8bc;box-shadow:inset 0 3px 4px #285875,0 1px #d8edf2}
 .aqdk input[type=range]:active:not(:disabled)::-moz-range-thumb{background:#7da8bc;box-shadow:inset 0 3px 4px #285875}
+
+/* Smooth latch recess; original bezel and thumb retain their separate material layers. */
+.aqdk-cc-track{position:absolute;left:87.0945%;top:40.3315%;width:5.7281%;height:12.1547%;border-radius:999px;background:linear-gradient(90deg,#74858d 0%,#8e969b 13%,#a2a6a9 48%,#969da1 82%,#6f838d 100%);box-shadow:inset 1px 1px 2px #52667180,inset -1px -1px 1px #d3d7d9;pointer-events:none}

@@ -45,6 +45,7 @@ export async function mountAquaDeck(host,options={}){
  const art=document.createElement('div');art.className='aqdk-art';art.setAttribute('aria-hidden','true');stage.append(art);
  const asset=name=>options.assetBase?new URL(name,new URL(options.assetBase,document.baseURI)).href:bundledAssets[name];
  const base=document.createElement('img');base.src=asset('chassis.png');base.alt='';base.className='aqdk-base';art.append(base);
+ const ccTrack=document.createElement('span');ccTrack.className='aqdk-cc-track';art.append(ccTrack);
  const aperture=document.createElement('media-container');aperture.className='aqdk-screen';stage.append(aperture);
  const video=document.createElement('video');video.playsInline=true;video.preload='metadata';video.crossOrigin=options.crossOrigin||'anonymous';video.src=options.src;if(options.poster)video.poster=options.poster;aperture.append(video);
  for(const caption of options.captions||[]){const t=document.createElement('track');t.kind='captions';t.src=caption.src;t.srclang=caption.language||'en';t.label=caption.label||t.srclang;video.append(t)}

@@ -52,3 +52,6 @@
 .art-cap{background-image:var(--cap-rest)}
 
 .artwork-mode .deck:fullscreen .art-layer{display:none}
+
+/* Smooth inner latch recess covers the raster repair edge; bezel and moving cap remain artwork. */
+.art-cc-track{position:absolute;left:87.0945%;top:40.3315%;width:5.7281%;height:12.1547%;border-radius:999px;background:linear-gradient(90deg,#74858d 0%,#8e969b 13%,#a2a6a9 48%,#969da1 82%,#6f838d 100%);box-shadow:inset 1px 1px 2px #52667180,inset -1px -1px 1px #d3d7d9;pointer-events:none}
