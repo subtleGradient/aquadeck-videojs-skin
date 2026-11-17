@@ -30,3 +30,23 @@ test('Small mounts retain the artwork control layer without a separate dock',()=
  assert.ok(!css.includes('@container(max-width:760px)'));
  assert.ok(!js.includes('USE CONTROLS BELOW'));
 });
+
+test('Reduced-motion changes do not override explicitly disabled reflections',()=>{
+ const source=read('index.js');
+ const expression=source.match(/listen\(motion,'change',\(\)=>setReflections\((.*?)\)\)/)[1];
+ const enabled=new Function('options','motion',`return ${expression}`);
+ assert.equal(enabled({reflections:false},{matches:false}),false);
+ assert.equal(enabled({},{matches:true}),false);
+ assert.equal(enabled({},{matches:false}),true);
+});
+test('Fullscreen includes an iOS video fallback and native state labels',()=>{
+ const source=read('index.js');
+ assert.ok(source.includes('else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen()'));
+ assert.ok(source.includes("listen(video,'webkitbeginfullscreen'"));
+ assert.ok(source.includes("listen(video,'webkitendfullscreen'"));
+});
+test('CC state text has at least 4.5:1 contrast across the track gradient',()=>{
+ const luminance=hex=>{const c=hex.match(/../g).map(h=>parseInt(h,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+ for(const background of ['74858d','8e969b','a2a6a9','969da1','6f838d'])assert.ok((luminance(background)+.05)/(luminance('06131b')+.05)>=4.5);
+ assert.ok(read('style.css').includes('.aqdk-cc-label{color:#06131b}'));
+});
