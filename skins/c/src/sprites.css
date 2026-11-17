@@ -1,0 +1,33 @@
+
+/* Original-style rendered sprites. Every control has separately illustrated states. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.transport button,.switches button{--face:var(--normal);background:none!important;filter:none!important;transform:none!important;opacity:1!important;transition:none;position:relative}
+.transport button::before,.switches button::before{content:"";position:absolute;left:50%;top:50%;width:110%;aspect-ratio:225/200;transform:translate(-50%,-50%);background:var(--face) center/contain no-repeat;pointer-events:none}
+.switches button::before{width:110%;aspect-ratio:225/100}
+@media(hover:hover){.transport button:hover,.switches button:hover,input[type=range]:hover{--face:var(--hover)}}
+.transport button:focus-visible,.switches button:focus-visible,input[type=range]:focus-visible{--face:var(--focus)}
+.transport button:active,.switches button:active,.transport button[data-key-pressed],.switches button[data-key-pressed],input[type=range]:active{--face:var(--pressed)}
+.transport button:disabled,.switches button:disabled,input[type=range]:disabled{--face:var(--disabled);opacity:1}
+input[type=range]{--face:var(--normal)}
+input::-webkit-slider-runnable-track{background:transparent}
+input::-moz-range-track{background:transparent}
+input::-webkit-slider-thumb{background:var(--face) center/contain no-repeat;border:0;box-shadow:none;border-radius:0}
+input::-moz-range-thumb{background:var(--face) center/contain no-repeat;border:0;box-shadow:none;border-radius:0}
+#seek::-webkit-slider-thumb{width:24px;height:34px;margin-top:-15px}
+#seek::-moz-range-thumb{width:24px;height:34px}
+#volume::-webkit-slider-thumb{width:30px;height:24px;margin-left:-13px;margin-top:0}
+#volume::-moz-range-thumb{width:30px;height:24px}
+#back{--normal:url(/assets/sprites/back-normal.png);--hover:url(/assets/sprites/back-hover.png);--pressed:url(/assets/sprites/back-pressed.png);--focus:url(/assets/sprites/back-focus.png);--disabled:url(/assets/sprites/back-disabled.png);}
+#play{--normal:url(/assets/sprites/play-normal.png);--hover:url(/assets/sprites/play-hover.png);--pressed:url(/assets/sprites/play-pressed.png);--focus:url(/assets/sprites/play-focus.png);--disabled:url(/assets/sprites/play-disabled.png);}
+#play[data-paused="false"]{--normal:url(/assets/sprites/pause-normal.png);--hover:url(/assets/sprites/pause-hover.png);--pressed:url(/assets/sprites/pause-pressed.png);--focus:url(/assets/sprites/pause-focus.png);--disabled:url(/assets/sprites/pause-disabled.png);}
+#stop{--normal:url(/assets/sprites/stop-normal.png);--hover:url(/assets/sprites/stop-hover.png);--pressed:url(/assets/sprites/stop-pressed.png);--focus:url(/assets/sprites/stop-focus.png);--disabled:url(/assets/sprites/stop-disabled.png);}
+#forward{--normal:url(/assets/sprites/forward-normal.png);--hover:url(/assets/sprites/forward-hover.png);--pressed:url(/assets/sprites/forward-pressed.png);--focus:url(/assets/sprites/forward-focus.png);--disabled:url(/assets/sprites/forward-disabled.png);}
+#fullscreen{--normal:url(/assets/sprites/fullscreen-normal.png);--hover:url(/assets/sprites/fullscreen-hover.png);--pressed:url(/assets/sprites/fullscreen-pressed.png);--focus:url(/assets/sprites/fullscreen-focus.png);--disabled:url(/assets/sprites/fullscreen-disabled.png);}
+#cc{--normal:url(/assets/sprites/cc-off-normal.png);--hover:url(/assets/sprites/cc-off-hover.png);--pressed:url(/assets/sprites/cc-off-pressed.png);--focus:url(/assets/sprites/cc-off-focus.png);--disabled:url(/assets/sprites/cc-off-disabled.png);}
+#cc[aria-pressed="true"]{--normal:url(/assets/sprites/cc-on-normal.png);--hover:url(/assets/sprites/cc-on-hover.png);--pressed:url(/assets/sprites/cc-on-pressed.png);--focus:url(/assets/sprites/cc-on-focus.png);--disabled:url(/assets/sprites/cc-on-disabled.png);}
+#loop{--normal:url(/assets/sprites/loop-off-normal.png);--hover:url(/assets/sprites/loop-off-hover.png);--pressed:url(/assets/sprites/loop-off-pressed.png);--focus:url(/assets/sprites/loop-off-focus.png);--disabled:url(/assets/sprites/loop-off-disabled.png);}
+#loop[aria-pressed="true"]{--normal:url(/assets/sprites/loop-on-normal.png);--hover:url(/assets/sprites/loop-on-hover.png);--pressed:url(/assets/sprites/loop-on-pressed.png);--focus:url(/assets/sprites/loop-on-focus.png);--disabled:url(/assets/sprites/loop-on-disabled.png);}
+#mute{--normal:url(/assets/sprites/sound-on-normal.png);--hover:url(/assets/sprites/sound-on-hover.png);--pressed:url(/assets/sprites/sound-on-pressed.png);--focus:url(/assets/sprites/sound-on-focus.png);--disabled:url(/assets/sprites/sound-on-disabled.png);}
+#mute[aria-pressed="true"]{--normal:url(/assets/sprites/sound-off-normal.png);--hover:url(/assets/sprites/sound-off-hover.png);--pressed:url(/assets/sprites/sound-off-pressed.png);--focus:url(/assets/sprites/sound-off-focus.png);--disabled:url(/assets/sprites/sound-off-disabled.png);}
+#seek{--normal:url(/assets/sprites/seek-normal.png);--hover:url(/assets/sprites/seek-hover.png);--pressed:url(/assets/sprites/seek-pressed.png);--focus:url(/assets/sprites/seek-focus.png);--disabled:url(/assets/sprites/seek-disabled.png);}
+#volume{--normal:url(/assets/sprites/volume-normal.png);--hover:url(/assets/sprites/volume-hover.png);--pressed:url(/assets/sprites/volume-pressed.png);--focus:url(/assets/sprites/volume-focus.png);--disabled:url(/assets/sprites/volume-disabled.png);}

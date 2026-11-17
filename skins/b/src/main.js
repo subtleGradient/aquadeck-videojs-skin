@@ -1,7 +1,5 @@
 import '@videojs/html/video/player';
 import '@videojs/html/ui/container';
-import '@videojs/html/ui/play-button';
-import '@videojs/html/ui/mute-button';
 import './style.css';
 const $=s=>document.querySelector(s),video=$('#video'),player=$('#player');
 await customElements.whenDefined('video-player');
@@ -10,7 +8,7 @@ video.volume=.65;
 let dragging=false,buffering=false;
 const duration=()=>Number.isFinite(video.duration)?video.duration:24;
 function sync(){
- document.body.classList.toggle('playing',!video.paused);document.body.classList.toggle('muted',video.muted||video.volume===0);
+ $('#play').setAttribute('aria-label',video.paused?'Play':'Pause');$('#mute').setAttribute('aria-label',video.muted?'Unmute':'Mute');document.body.classList.toggle('playing',!video.paused);document.body.classList.toggle('muted',video.muted||video.volume===0);
  $('#time').textContent=`${format(video.currentTime)} / ${format(duration())}`;
  $('#status').textContent=video.error?'LOAD ERROR':video.ended?'TRANSMISSION ENDED':buffering&&!video.paused?'BUFFERING':video.paused?'READY / PAUSED':'RECEIVING';
  $('#seek').disabled=!Number.isFinite(video.duration);$('#seek').max=duration();if(!dragging)$('#seek').value=video.currentTime;
@@ -25,6 +23,10 @@ for(const name of ['pointerup','pointercancel','blur'])window.addEventListener(n
 $('#seek').oninput=e=>seek(Number(e.target.value));
 $('#seek').onkeydown=e=>{const delta={ArrowRight:5,ArrowUp:5,ArrowLeft:-5,ArrowDown:-5,PageUp:10,PageDown:-10};let target;if(e.key in delta)target=video.currentTime+delta[e.key];else if(e.key==='Home')target=0;else if(e.key==='End')target=duration();else return;e.preventDefault();seek(target)};
 $('#volume').oninput=e=>{video.volume=Number(e.target.value);video.muted=video.volume===0};
+// Keep play() in the native click gesture for iOS user-activation requirements.
+// Video.js observes the same native media element and remains the player/store.
+$('#play').onclick=()=>{if(video.paused){$('#error').textContent='';const attempt=video.play();attempt?.catch(()=>{$('#error').textContent='Playback could not start. Tap Play to retry.';sync()})}else video.pause();sync()};
+$('#mute').onclick=()=>{video.muted=!video.muted;sync()};
 $('#stop').onclick=async()=>{try{await player.store.pause();seek(0)}catch{$('#notice').textContent='Playback could not stop. Try pausing again.'}};
 $('#captions').onclick=()=>{const track=Array.from(video.textTracks).find(t=>t.kind==='captions');if(track)track.mode=track.mode==='showing'?'hidden':'showing';sync()};
 video.textTracks.addEventListener('change',sync);
@@ -37,3 +39,8 @@ video.addEventListener('pause',()=>{buffering=false;sync()});
 for(const name of ['playing','canplay'])video.addEventListener(name,()=>{buffering=false;$('#error').textContent='';sync()});
 video.addEventListener('error',()=>{$('#error').textContent='Transmission interrupted. Reload to reconnect.';$('#status').textContent='LOAD ERROR'});
 sync();window.nebula={video,player,seek};
+
+// Generated pressed frames also respond to keyboard activation.
+document.addEventListener('keydown',event=>{if(event.key!==' '&&event.key!=='Enter')return;const button=event.target.closest('button');if(button&&!button.disabled)button.dataset.keyPressed='true'});
+function releaseKeys(){document.querySelectorAll('[data-key-pressed]').forEach(button=>delete button.dataset.keyPressed)}
+document.addEventListener('keyup',releaseKeys);document.addEventListener('focusout',releaseKeys);window.addEventListener('blur',releaseKeys);

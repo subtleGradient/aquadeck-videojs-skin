@@ -9,3 +9,5 @@ The original generated chassis follows the owner's candy-orange/lime translucent
 Generation brief: isolate the B candy-orange/lime translucent alien gadget; retain Y2K soft molded resin, chrome seams and antenna; remove all text, buttons and moving slider thumbs; leave an empty lower control shelf; true transparent outer background and screen aperture. Native HTML supplies controls and states.
 
 Demo video, poster and descriptive captions are reused from the owner's AQUADECK project; see public/assets/VIDEO-README.md.
+
+Generated control artwork: transport-sheet.png (six faces × five physical states) and auxiliary-sheet.png (captions, loop, seek jewel, volume capsule × five states), generated via built-in OpenAI image generator from the owner’s B reference. The 50 sliced sprites retain their alpha channel. Each hover/pressed/focus/disabled frame is separately generated artwork, not a CSS-filtered copy. Slice script included.

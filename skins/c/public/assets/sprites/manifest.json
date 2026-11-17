@@ -1,0 +1,912 @@
+{
+  "back-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      12,
+      58,
+      236,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "back-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      12,
+      280,
+      236,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "back-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      12,
+      503,
+      236,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "back-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      12,
+      726,
+      236,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "back-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      12,
+      950,
+      236,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "play-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      238,
+      58,
+      462,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "play-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      238,
+      280,
+      462,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "play-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      238,
+      503,
+      462,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "play-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      238,
+      726,
+      462,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "play-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      238,
+      950,
+      462,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "pause-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      463,
+      58,
+      687,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "pause-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      463,
+      280,
+      687,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "pause-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      463,
+      503,
+      687,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "pause-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      463,
+      726,
+      687,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "pause-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      463,
+      950,
+      687,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "stop-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      688,
+      58,
+      912,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "stop-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      688,
+      280,
+      912,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "stop-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      688,
+      503,
+      912,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "stop-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      688,
+      726,
+      912,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "stop-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      688,
+      950,
+      912,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "forward-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      913,
+      58,
+      1137,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "forward-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      913,
+      280,
+      1137,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "forward-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      913,
+      503,
+      1137,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "forward-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      913,
+      726,
+      1137,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "forward-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      913,
+      950,
+      1137,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "fullscreen-normal.png": {
+    "source": "transport-states.png",
+    "crop": [
+      1138,
+      58,
+      1362,
+      258
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "fullscreen-hover.png": {
+    "source": "transport-states.png",
+    "crop": [
+      1138,
+      280,
+      1362,
+      480
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "fullscreen-pressed.png": {
+    "source": "transport-states.png",
+    "crop": [
+      1138,
+      503,
+      1362,
+      703
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "fullscreen-focus.png": {
+    "source": "transport-states.png",
+    "crop": [
+      1138,
+      726,
+      1362,
+      926
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "fullscreen-disabled.png": {
+    "source": "transport-states.png",
+    "crop": [
+      1138,
+      950,
+      1362,
+      1150
+    ],
+    "size": [
+      224,
+      200
+    ]
+  },
+  "cc-off-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      13,
+      123,
+      237,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-off-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      13,
+      329,
+      237,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-off-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      13,
+      539,
+      237,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-off-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      13,
+      745,
+      237,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-off-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      13,
+      952,
+      237,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-on-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      238,
+      123,
+      462,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-on-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      238,
+      329,
+      462,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-on-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      238,
+      539,
+      462,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-on-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      238,
+      745,
+      462,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "cc-on-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      238,
+      952,
+      462,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-off-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      463,
+      123,
+      687,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-off-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      463,
+      329,
+      687,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-off-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      463,
+      539,
+      687,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-off-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      463,
+      745,
+      687,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-off-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      463,
+      952,
+      687,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-on-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      688,
+      123,
+      912,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-on-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      688,
+      329,
+      912,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-on-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      688,
+      539,
+      912,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-on-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      688,
+      745,
+      912,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "loop-on-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      688,
+      952,
+      912,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-on-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      913,
+      123,
+      1137,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-on-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      913,
+      329,
+      1137,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-on-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      913,
+      539,
+      1137,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-on-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      913,
+      745,
+      1137,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-on-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      913,
+      952,
+      1137,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-off-normal.png": {
+    "source": "switch-states.png",
+    "crop": [
+      1138,
+      123,
+      1362,
+      223
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-off-hover.png": {
+    "source": "switch-states.png",
+    "crop": [
+      1138,
+      329,
+      1362,
+      429
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-off-pressed.png": {
+    "source": "switch-states.png",
+    "crop": [
+      1138,
+      539,
+      1362,
+      639
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-off-focus.png": {
+    "source": "switch-states.png",
+    "crop": [
+      1138,
+      745,
+      1362,
+      845
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "sound-off-disabled.png": {
+    "source": "switch-states.png",
+    "crop": [
+      1138,
+      952,
+      1362,
+      1052
+    ],
+    "size": [
+      224,
+      100
+    ]
+  },
+  "seek-normal.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      168,
+      25,
+      368,
+      305
+    ],
+    "size": [
+      200,
+      280
+    ]
+  },
+  "seek-hover.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      168,
+      326,
+      368,
+      606
+    ],
+    "size": [
+      200,
+      280
+    ]
+  },
+  "seek-pressed.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      168,
+      626,
+      368,
+      906
+    ],
+    "size": [
+      200,
+      280
+    ]
+  },
+  "seek-focus.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      168,
+      927,
+      368,
+      1207
+    ],
+    "size": [
+      200,
+      280
+    ]
+  },
+  "seek-disabled.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      168,
+      1228,
+      368,
+      1508
+    ],
+    "size": [
+      200,
+      280
+    ]
+  },
+  "volume-normal.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      619,
+      65,
+      879,
+      265
+    ],
+    "size": [
+      260,
+      200
+    ]
+  },
+  "volume-hover.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      619,
+      366,
+      879,
+      566
+    ],
+    "size": [
+      260,
+      200
+    ]
+  },
+  "volume-pressed.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      619,
+      666,
+      879,
+      866
+    ],
+    "size": [
+      260,
+      200
+    ]
+  },
+  "volume-focus.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      619,
+      967,
+      879,
+      1167
+    ],
+    "size": [
+      260,
+      200
+    ]
+  },
+  "volume-disabled.png": {
+    "source": "thumb-states.png",
+    "crop": [
+      619,
+      1268,
+      879,
+      1468
+    ],
+    "size": [
+      260,
+      200
+    ]
+  }
+}

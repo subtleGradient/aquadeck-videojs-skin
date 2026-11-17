@@ -2,7 +2,7 @@
 
 An ultraviolet biomechanical skin for **Video.js v10**. Silver ribs coil around a violet viewport; amethyst transport controls sit in a polished, organic shell. A media player from a future imagined in 2001.
 
-The artwork is a transparent frame, not a screenshot of a player. Video runs in its cut-out aperture, and every control is a real HTML button or slider. No WebGL, canvas render loop, or duplicate mobile toolbar.
+The artwork is a transparent frame, not a screenshot of a player. Seventy registered PNG sprites supply real illustrated normal, hover, pressed, cyan-focus and disabled states: six transport faces, six switch positions and two slider thumbs. Icons and switch labels are baked into the artwork, not drawn with CSS or supplied by an emoji font. Video runs in its cut-out aperture, and every control is a real HTML button or slider. No WebGL, canvas render loop, or duplicate mobile toolbar.
 
 ## Play
 
@@ -23,7 +23,11 @@ The same control surfaces remain in place on narrow screens with larger transpar
 ## Source map
 
 - `src/main.js`: Video.js v10 player integration and control synchronization
-- `src/style.css`: responsive skin and host page
+- `src/style.css`: responsive layout and host page
+- `src/sprites.css`: state selection and native-control alignment
+- `artwork-source/`: three full-resolution rendered state atlases
+- `public/assets/sprites/`: 70 precisely registered transparent slices and crop manifest
+- `scripts/slice-sprites.py`: reproducible slicing, with no color/material simulation
 - `public/assets/pod.png`: transparent chassis with empty control sockets
 - `public/assets/aqua-motion.mp4`: 24-second original AQUADECK motion study
 - `tests/smoke.cjs`: browser behavior checks; requires Playwright and Chromium
