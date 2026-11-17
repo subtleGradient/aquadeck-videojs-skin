@@ -4,3 +4,5 @@ test('uses Video.js 10 HTML player and media controls',()=>{assert.match(js,/@vi
 test('essential controls exist exactly once',()=>{for(const id of ['play','seek','time','mute','volume','fullscreen'])assert.equal(html.split(`id="${id}"`).length-1,1)});
 test('no renderer APIs, autoplay or duplicated mobile toolbar',()=>{assert.doesNotMatch(js,/getContext|requestAnimationFrame|WebGLRenderingContext/);assert.doesNotMatch(html,/<canvas|autoplay[=> ]/);assert.match(css,/prefers-reduced-motion/)});
 test('accessible range, visible focus, error recovery, reserved layout',()=>{assert.match(html,/aria-label="Video position"/);assert.match(css,/:focus-visible/);assert.match(js,/\['playing','canplay'\]/);assert.match(css,/aspect-ratio:1086\/1448/)});
+
+test('preserves error and buffering states across time/volume updates',()=>{assert.match(js,/video.error\?'LOAD ERROR'/);assert.match(js,/buffering&&!video.paused\?'BUFFERING'/);assert.match(js,/'durationchange'/);assert.match(css,/input:disabled/)});
